@@ -9,8 +9,10 @@
       
       
       
+        <link rel="prev" href="index.html">
       
-        <link rel="next" href="introducao.html">
+      
+        <link rel="next" href="constantes%20da%20natureza.html">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -18,7 +20,7 @@
     
     
       
-        <title>LabIFSC2</title>
+        <title>Introdução - LabIFSC2</title>
       
     
     
@@ -72,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#labifsc2-calculos-de-laboratorio-com-python" class="md-skip">
+        <a href="#importacao" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sobre
+              Introdução
             
           </span>
         </div>
@@ -213,10 +215,8 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
+    <li class="md-tabs__item">
       <a href="index.html" class="md-tabs__link">
         
   
@@ -232,8 +232,10 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
+  
+    <li class="md-tabs__item md-tabs__item--active">
       <a href="introducao.html" class="md-tabs__link">
         
   
@@ -450,6 +452,26 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sobre
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -459,25 +481,23 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   <span class="md-ellipsis">
-    Sobre
+    Introdução
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="index.html" class="md-nav__link md-nav__link--active">
+      <a href="introducao.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Sobre
+    Introdução
   </span>
   
 
@@ -489,8 +509,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -499,36 +517,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#faca-propagacao-de-incertezas-e-conversao-de-medidas-automaticamente" class="md-nav__link">
+  <a href="#importacao" class="md-nav__link">
     <span class="md-ellipsis">
-      Faça propagação de incertezas e conversão de medidas automaticamente!
+      Importação
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#instalacao" class="md-nav__link">
+  <a href="#classe-medida" class="md-nav__link">
     <span class="md-ellipsis">
-      Instalação
+      Classe Medida
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#escopo-de-aplicacao" class="md-nav__link">
+  <a href="#varias-medicoes" class="md-nav__link">
     <span class="md-ellipsis">
-      Escopo de aplicação
+      Várias medições
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#o-que-ha-de-novo" class="md-nav__link">
+  <a href="#comparando-medidas" class="md-nav__link">
     <span class="md-ellipsis">
-      O que há de novo?
+      Comparando Medidas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intervalo-de-confianca" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intervalo de Confiança
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convertendo-unidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convertendo Unidades
     </span>
   </a>
   
@@ -538,26 +574,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="introducao.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Introdução
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -760,111 +776,98 @@
   
 
 
-<h1 id="labifsc2-calculos-de-laboratorio-com-python"><strong>LabIFSC2: Cálculos de laboratório com Python</strong></h1>
-<h2 id="faca-propagacao-de-incertezas-e-conversao-de-medidas-automaticamente">Faça propagação de incertezas e conversão de medidas <strong>automaticamente</strong>!</h2>
-<p>Eis um exemplo simples de uso da biblioteca, estamos estimando a gravidade da Terra baseado no período de um pêndulo pela conhecida formula <script type="math/tex">T=2\pi \sqrt{\frac{L}{g}}</script>
-<div class="highlight"><span class="filename">Estimativa da gravidade (com LabIFSC2)</span><pre><span></span><code>    <span class="c1">#g=4π²L/T²</span>
-    <span class="n">pi</span><span class="o">=</span><span class="n">constantes</span><span class="o">.</span><span class="n">pi</span>
-    <span class="n">L</span><span class="o">=</span><span class="n">Medida</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="s1">&#39;cm&#39;</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
-    <span class="n">T</span><span class="o">=</span><span class="n">Medida</span><span class="p">(</span><span class="mi">780</span><span class="p">,</span><span class="s1">&#39;ms&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">gravidade</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">L</span><span class="o">/</span><span class="n">T</span><span class="o">**</span><span class="mi">2</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gravidade</span><span class="si">:</span><span class="s2">si</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1">#(9,73 ± 0,07) m/s²</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gravidade</span><span class="si">:</span><span class="s2">si_latex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;(9,73 \, \pm \, 0,07) \, </span>
-<span class="sd">    \frac{\mathrm{m}}{\mathrm{s}^{2}}&#39;&#39;&#39;</span>
-</code></pre></div></p>
-<p>
-<script type="math/tex">g=(9,73 \, \pm \, 0,07) \, 
-\frac{\mathrm{m}}{\mathrm{s}^{2}} </script>
-</p>
-<p>Podemos copiar o resultado em formato <script type="math/tex">\LaTeX</script> e adicionarmos em nosso relatório! A fins de comparação esse é o código equivalente sem a ajuda da biblioteca, perceba como sem a biblioteca existem muitas possibilidades de erros acidentais</p>
-<div class="highlight"><span class="filename">Estimativa da gravidade (sem LabIFSC2)</span><pre><span></span><code>    <span class="c1">#g=4π²L/T²</span>
-    <span class="c1">#conversões manuais</span>
-    <span class="n">L</span><span class="o">=</span><span class="mi">15</span><span class="o">*</span><span class="mf">1e-2</span>
-    <span class="n">dL</span><span class="o">=</span><span class="mf">0.1</span><span class="o">*</span><span class="mf">1e-2</span>
-    <span class="n">T</span><span class="o">=</span><span class="mi">780</span><span class="o">*</span><span class="mf">1e-3</span>
-    <span class="n">dT</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="mf">1e-3</span>
-    <span class="n">g</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">L</span><span class="o">/</span><span class="p">(</span><span class="n">T</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-    <span class="c1">#propagação de erro usando derivada</span>
-    <span class="n">dg</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">dL</span><span class="o">/</span><span class="n">T</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span><span class="o">*</span><span class="n">dT</span><span class="o">/</span><span class="n">T</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">g</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> ± </span><span class="si">{</span><span class="n">dg</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m/s²&#39;</span><span class="p">)</span>  <span class="c1">#9.73 ± 0.07</span>
+  <h1>Introdução</h1>
+
+<h2 id="importacao">Importação</h2>
+<p>Como a biblioteca é em português e a maioria das bibliotecas são em inglês, acho muito difícil haver algum tipo de conflito de nomes. Então, sinta-se à vontade para fazer:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">LabIFSC2</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 </code></pre></div>
-<h2 id="instalacao">Instalação</h2>
-<p>A biblioteca está disponível no PyPI(Python Package Index), então ela pode ser instalada facilmente usando pip, atualmente é necessário ter uma versão do python igual ou superior a 3.10, para descobrir a versão do seu python digite <code>python --version</code> no terminal
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>LabIFSC2
-</code></pre></div></p>
-<h2 id="escopo-de-aplicacao">Escopo de aplicação</h2>
-<p>A biblioteca tem a intenção de agilizar cálculos dos laboratórios de física do IFSC da USP de São Carlos:</p>
+<p>Ou, se não quiser poluir o namespace global, use:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">LabIFSC2</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">lab</span>
+</code></pre></div>
+<h2 id="classe-medida">Classe Medida</h2>
+<p>A principal classe da biblioteca é a <code>Medida</code>. Ela recebe 3 argumentos para sua inicialização<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>:</p>
 <ul>
-<li>Laboratório de Física I</li>
-<li>Laboratório de Física II</li>
-<li>Laboratório de Física III</li>
-<li>Laboratório de Física IV</li>
-<li>Laboratório de Física Avançado</li>
-<li>Laboratório de Física Avançado II</li>
+<li>Nominal (<script type="math/tex">\mu</script>): Valor(es) medido(s).</li>
+<li>Unidade: Unidade da medida (precisa ser a mesma do valor nominal e da incerteza).</li>
+<li>Incerteza (<script type="math/tex">\sigma</script>): Incerteza experimental.</li>
 </ul>
-<p>Os critérios de comparação e formatação são baseadas na última versão da <a href="https://www.ifsc.usp.br/lef/index.php/apostilas/">apostila I</a> atualmente a versão 2017 (caso já exista uma versão mais recente por favor nós avise).</p>
-<p>É óbvio que a biblioteca se aplica a outros laboratórios e de outras universidades (principalmente por ter propagação de erros por Monte Carlo). 
-<strong>Só por favor fique atento que talvez certas convenções sejam diferentes</strong></p>
-<h2 id="o-que-ha-de-novo">O que há de novo?</h2>
-<p>O LabIFSC2 é uma modernização da antiga biblioteca <a href="https://github.com/gjvnq/LabIFSC">LabIFSC</a>, os desenvolvedores do LabIFSC2 não são os mesmos, porém queríamos deixar aqui nosso agradecimento por terem concebido uma solução tão elegante que agilizou a graduação de várias pessoas.</p>
-<p>Mesmo que a interface seja intencionalmente parecida a implementação é totalmente nova, para fazermos um resumo das melhorias estamos fazendo essa tabela.</p>
-<table>
-<thead>
-<tr>
-<th>Feature</th>
-<th>LabIFSC</th>
-<th>LabIFSC2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Propagação de erros</td>
-<td>Linear</td>
-<td>Arbitrária (Monte Carlo)</td>
-</tr>
-<tr>
-<td>Regressões</td>
-<td>Linear</td>
-<td>Linear,polinomial,exponencial e lei de potência</td>
-</tr>
-<tr>
-<td>Unidades</td>
-<td>Implementação autoral</td>
-<td>Baseado no famoso <a href="https://pint.readthedocs.io/">pint</a></td>
-</tr>
-<tr>
-<td>Constantes da natureza</td>
-<td>❌</td>
-<td>+350  definidas pela <a href="https://codata.org/initiatives/data-science-and-stewardship/fundamental-physical-constants/">CODATA(2022)</a></td>
-</tr>
-<tr>
-<td>Operações com arrays</td>
-<td>❌</td>
-<td>Suportadas pelo <a href="numpy.org">Numpy</a></td>
-</tr>
-<tr>
-<td>Segurança de tipos (mypy)</td>
-<td>❌</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Docstrings em funções</td>
-<td>❌</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Suporte</td>
-<td>❌</td>
-<td>Ativo</td>
-</tr>
-<tr>
-<td>Documentação</td>
-<td>Parcial</td>
-<td>Completa</td>
-</tr>
-</tbody>
-</table>
+<p>Para um exemplo prático, consideraremos um tipo de medida comum, o IMC (Índice de Massa Corporal), não confundir com (ICMC). Suponhamos que uma pessoa foi medida (valores fictícios) com uma fita métrica e temos certeza apenas na casa de 1 cm de sua altura e usamos uma balança com precisão de 100 g para medir a sua massa.</p>
+<p>Com o LabIFSC2, podemos fazer os cálculos assim:</p>
+<p><div class="highlight"><span class="filename">Cálculo de IMC</span><pre><span></span><code>    <span class="n">massa</span> <span class="o">=</span> <span class="n">Medida</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="s1">&#39;kg&#39;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">altura</span> <span class="o">=</span> <span class="n">Medida</span><span class="p">(</span><span class="mf">1.75</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+    <span class="n">imc</span> <span class="o">=</span> <span class="n">massa</span> <span class="o">/</span> <span class="n">altura</span><span class="o">**</span><span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">imc</span><span class="p">)</span>  <span class="c1"># (2,45 ± 0,03)x10¹ kg/m²</span>
+</code></pre></div>
+Calculamos então que o IMC tem valor esperado de <script type="math/tex">\mu=24,5 \, kg/m²</script> e desvio padrão de <script type="math/tex">\sigma=0.3 \, kg/m²</script>.</p>
+<p>Você pode acessar o valor nominal e a incerteza fazendo <code>medida.nominal(unidade)</code> ou <code>medida.incerteza(unidade)</code>. Repare que é necessário especificar uma unidade, visto que o valor nominal/incerteza são totalmente dependentes dela. É importante notar que somente em casos bem específicos você vai acessar diretamente esses valores. Se você usa muito essas funções, talvez não esteja usando a biblioteca corretamente.</p>
+<div class="highlight"><span class="filename">Cálculo de IMC</span><pre><span></span><code>    <span class="nb">print</span><span class="p">(</span><span class="n">imc</span><span class="o">.</span><span class="n">nominal</span><span class="p">(</span><span class="s1">&#39;kg/m²&#39;</span><span class="p">))</span>  <span class="c1"># 24.5</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">imc</span><span class="o">.</span><span class="n">incerteza</span><span class="p">(</span><span class="s1">&#39;kg/m²&#39;</span><span class="p">))</span>  <span class="c1"># 0.3</span>
+</code></pre></div>
+<h2 id="varias-medicoes">Várias medições</h2>
+<p>Podemos também criar uma medida baseada em várias medições, imagine que você está medindo o diâmetro de um fio levemente irregular. Você pode preencher o valor nominal como sendo uma lista de medições, a biblioteca irá considerar o valor nominal como a média dos valores.</p>
+<p><div class="highlight"><span class="filename">Cálculo de IMC</span><pre><span></span><code>    <span class="n">diametro</span><span class="o">=</span><span class="n">Medida</span><span class="p">([</span><span class="mf">1.76</span><span class="p">,</span><span class="mf">1.80</span><span class="p">,</span><span class="mf">1.77</span><span class="p">,</span><span class="mf">1.78</span><span class="p">],</span><span class="s1">&#39;cm&#39;</span><span class="p">,</span><span class="mf">0.005</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">diametro</span><span class="p">)</span> <span class="c1">#(1,78 ± 0,01) cm</span>
+</code></pre></div>
+Caso o desvio padrão das medições seja maior do que a incerteza experimental, então a incerteza é o desvio padrão. Intuitivamente, podemos pensar que o fio é objetivamente irregular e não existe exatamente um raio que o define. </p>
+<p>Mas se a incerteza experimental for maior que o desvio padrão, então não temos certeza se essa variação é devido ao fio ter um formato irregular ou por efeitos aleatórios de medição, a incerteza então é a incerteza experimental. </p>
+<p>Esse comportamento pode ser visto nesse exemplo, preste atenção nas incertezas:</p>
+<div class="highlight"><span class="filename">Cálculo de IMC</span><pre><span></span><code>    <span class="n">diametro</span><span class="o">=</span><span class="n">Medida</span><span class="p">([</span><span class="mf">1.76</span><span class="p">,</span><span class="mf">1.80</span><span class="p">,</span><span class="mf">1.77</span><span class="p">,</span><span class="mf">1.78</span><span class="p">],</span><span class="s1">&#39;cm&#39;</span><span class="p">,</span><span class="mf">0.005</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">diametro</span><span class="p">)</span> <span class="c1">#(1,78 ± 0,01) cm</span>
+    <span class="n">diametro_incerteza_grande</span><span class="o">=</span><span class="n">Medida</span><span class="p">([</span><span class="mf">1.76</span><span class="p">,</span><span class="mf">1.80</span><span class="p">,</span><span class="mf">1.77</span><span class="p">,</span><span class="mf">1.78</span><span class="p">],</span><span class="s1">&#39;cm&#39;</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">diametro_incerteza_grande</span><span class="p">)</span><span class="c1">#(1,8 ± 0,1) cm</span>
+</code></pre></div>
+<h2 id="comparando-medidas">Comparando Medidas</h2>
+<p>Se uma segunda pessoa afirmar que seu IMC é de (25 ± 0.1), podemos dizer que seus IMCs são equivalentes? Mesmo que <script type="math/tex">25 \ne 24.5</script>, pela incerteza nas medidas podemos dizer que essa diferença está na margem de erro do experimento.</p>
+<p>O método que faz essa comparação é <code>comparar_medidas</code>, que recebe duas Medidas e retorna se elas são:</p>
+<ul>
+<li>EQUIVALENTES</li>
+<li>DIFERENTES</li>
+<li>INCONCLUSIVO</li>
+</ul>
+<div class="highlight"><span class="filename">Comparando IMC</span><pre><span></span><code>    <span class="n">imc1</span> <span class="o">=</span> <span class="n">Medida</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;kg/m²&#39;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">imc2</span> <span class="o">=</span> <span class="n">Medida</span><span class="p">(</span><span class="mf">24.5</span><span class="p">,</span> <span class="s1">&#39;kg/m²&#39;</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">comparar_medidas</span><span class="p">(</span><span class="n">imc1</span><span class="p">,</span> <span class="n">imc2</span><span class="p">))</span>
+    <span class="c1"># Comparacao.EQUIVALENTES</span>
+</code></pre></div>
+<p>Perceba que 3 resultados são possíveis, então infelizmente a sintaxe <code>ìmc1==imc2</code> ou <code>ìmc1!=imc2</code> não é perfeita, porque no caso inconclusivo temos <code>ìmc1==imc2 (False)</code> e <code>ìmc1!=imc2 (False)</code> ao mesmo tempo, o que creio ser javascript demais pro meu gosto.</p>
+<p>O critério usado é o da apostila:</p>
+<ul>
+<li>EQUIVALENTES: <script type="math/tex">|\Delta \mu| \le 2(\sigma_1+\sigma_2)</script>
+</li>
+<li>INCONCLUSIVO: <script type="math/tex">2(\sigma_1+\sigma_2) < |\Delta \mu| < 3(\sigma_1+\sigma_2)</script>
+</li>
+<li>DIFERENTES: <script type="math/tex">|\Delta \mu| \ge 3(\sigma_1+\sigma_2)</script>
+</li>
+</ul>
+<p>Intuitivamente, a comparação é feita pelo quanto os valores nominais são diferentes e quanta incerteza temos nas medidas.</p>
+<h2 id="intervalo-de-confianca">Intervalo de Confiança</h2>
+<p>Como estamos falando de medidas experimentais, falamos de <strong>intervalos</strong> e não valores exatos. Objetos da classe <code>Medida</code> possuem um método chamado <code>intervalo_de_confiança</code>. Com ele, podemos especificar uma probabilidade <code>p</code> de estarmos representando os valores possíveis das Medidas.</p>
+<p><div class="highlight"><span class="filename">Intervalo de confiança IMC</span><pre><span></span><code>    <span class="n">imc</span><span class="o">=</span><span class="n">Medida</span><span class="p">(</span><span class="mf">24.5</span><span class="p">,</span><span class="s1">&#39;kg/m²&#39;</span><span class="p">,</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">imc</span><span class="o">.</span><span class="n">intervalo_de_confiança</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span><span class="s1">&#39;kg/m²&#39;</span><span class="p">))</span>
+    <span class="c1">#[23.91,25.08]</span>
+</code></pre></div>
+Basicamente, isso significa que estamos 95% certos de que o IMC está entre <script type="math/tex">23,91 \le IMC \le 25,08</script>. Talvez você esteja surpreso que pelo método de medida temos 1 unidade inteira de IMC podendo variar.</p>
+<h2 id="convertendo-unidades">Convertendo Unidades</h2>
+<p>Por padrão, a unidade guardada em um objeto <code>Medida</code> é a unidade calculada pela operação realizada na sua geração. Então, se tivéssemos medido a altura usando <script type="math/tex">cm</script>, teríamos o IMC em <script type="math/tex">kg/cm²</script>.</p>
+<p>Como o LabIFSC2 abstrai a conversão de unidades, uma das escolhas de design da biblioteca foi que a unidade em que a Medida é representada é decidida no momento do print, fazendo o print de uma string formatada, as chamadas <a href="https://www.youtube.com/watch?v=fkGFNOOmXsY">fstrings</a> (formatted strings) de Python.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">medida</span><span class="si">:</span><span class="s2">unidade</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Um exemplo concreto se encontra abaixo:</p>
+<div class="highlight"><span class="filename">Conversão de unidades Medida</span><pre><span></span><code>    <span class="nb">print</span><span class="p">(</span><span class="n">imc</span><span class="p">)</span>  <span class="c1"># (2,45 ± 0,03)x10⁻³ kg/cm²</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">imc</span><span class="si">:</span><span class="s2">kg/m²</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># (2,45 ± 0,03)x10¹ kg/m²</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">imc</span><span class="si">:</span><span class="s2">g/cm²</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># (2,45 ± 0,03) g/cm²</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">imc</span><span class="si">:</span><span class="s2">si</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># (2,45 ± 0,03)x10¹ kg/m²</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">imc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Perceba que o LabIFSC2 tem uma diferença de ordem de argumentos na criação de uma <code>Medida</code> em relação ao LabIFSC. Eu decidi colocar as unidades no meio da declaração pois, pessoalmente, acho que uma unidade no meio dos argumentos torna a leitura dos valores nominal e incerteza mais simples. Isso fica mais evidente em funções como <code>lab.linspaceM</code> e <code>lab.arrayM</code> em que temos muitos valores numéricos nos seus construtores.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
